@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Device Shop Manager</title>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1 style="text-align: center">Device</h1><br><br><br>
+        <h3 style="text-align: center"><i>Shop Manager</i></h3>
+        {% if devices|length < 1 %}
+            <h4 style="text-align: center">There are no devices. Create one below!</h4>
+        {% else %}
+
+            <table>
+                <tr>
+                    <th>Origin country</th>
+                    <th>Price</th>
+                    <th>Weight in grams</th>
+                    <th>Material</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Added</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    {% for device in devices %}
+                        <td>{{ device.origin_country }}</td>
+                        <td>{{ device.price }}</td>
+                        <td>{{ device.weight_in_grams }}</td>
+                        <td>{{ device.material }}</td>
+                        <td>{{ device.category }}</td>
+                        <td>{{ device.type }}</td>
+                        <td>{{ device.date_created.date() }}</td>
+                        <td>
+                            <a href="/delete/{{ device.id }}">Delete</a>
+                            <br>
+                            <a href="/update/{{ device.id }}">Update</a>
+                        </td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        {% endif %}
+
+        <form action="/" method="POST">
+            <br><br><br>
+            <i><h3 style="text-align: center">Add device</h3></i>
+            <h5 style="text-align: center">Origin Country</h5>
+            <input type="text" name="origin_country" id="content">
+            <h5 style="text-align: center">Price</h5>
+            <input type="text" name="price" id="content">
+            <h5 style="text-align: center">Weight in grams</h5>
+            <input type="text" name="weight_in_grams" id="content">
+            <h5 style="text-align: center">Material</h5>
+            <input type="text" name="material" id="content">
+            <h5 style="text-align: center">Category</h5>
+            <input type="text" name="category" id="content">
+            <h5 style="text-align: center">Type</h5>
+            <input type="text" name="type" id="content">
+            <br><br>
+            <input style="text-align: center" type="submit" value="Add to sale">
+        </form>
+    </div>
+{% endblock %}

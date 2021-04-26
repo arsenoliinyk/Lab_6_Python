@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Device Shop Manager</title>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1 style="text-align: center">Update device</h1>
+
+
+        <form action="/update/{{ device.id }}" method="POST">
+            <h5 style="text-align: center">Origin Country</h5>
+            <input type="text" name="origin_country" id="content">
+            <h5 style="text-align: center">Price</h5>
+            <input type="text" name="price" id="content">
+            <h5 style="text-align: center">Weight in grams</h5>
+            <input type="text" name="weight_in_grams" id="content">
+            <h5 style="text-align: center">Material</h5>
+            <input type="text" name="material" id="content">
+            <h5 style="text-align: center">Category</h5>
+            <input type="text" name="category" id="content">
+            <h5 style="text-align: center">Type</h5>
+            <input type="text" name="type" id="content">
+            <br><br>
+            <input type="submit" value="Update device">
+        </form>
+    </div>
+{% endblock %}
